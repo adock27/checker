@@ -1,45 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
 
-    <!-- bootstrap  -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-      crossorigin="anonymous"
-    />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap demo</title>
 
-    <!-- jquery-3  -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
+  <!-- bootstrap  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
 
-    <!-- google fonts  -->
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+  <!-- jquery-3  -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-      body {
-        font-family: "Work Sans", sans-serif;
-      }
-    </style>
+  <!-- google fonts  -->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-  </head>
+    body {
+      font-family: "Work Sans", sans-serif;
+    }
+  </style>
 
-  <body class="bg-custom animate__animated animate__fadeIn">
-    <div class="row vh-100 align-items-center justify-content-center py-5 p-3">
-      <div class="col-md-10">
-        <div class="bg-white p-3 rounded-4 mb-3">
-          <h1>Anderson Web Checker</h1>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+
+</head>
+
+<body class="bg-light animate__animated animate__fadeIn">
+  <!-- navbar -->
+  <nav class="navbar navbar-dark bg-primary"">
+      <div class=" container-fluid">
+    <a class="navbar-brand" href="#">Anderson Web Checker</a>
+    </div>
+  </nav>
+  <!-- fin navbar -->
+
+  <!-- nav  -->
+  <nav class="nav bg-white border">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link disabled">Disabled</a>
+  </nav>
+  <!-- finnav  -->
+
+  <div class="container-fluid">
+    <div class="row vh-100 pt-3">
+      <div class="col">
+        <div class="bg-white p-3 rounded-4 mb-3 border">
+          <h3 class="fw-bold">Url Checker</h3>
           <p>
             Recuerde: una Url valida debe contener el protocolo http o
             https.(https://www.example.com)
@@ -47,147 +58,119 @@
           <form id="formulario" method="post">
             <!-- campo para urls  -->
             <label for="urls">Agregar urls de sitios web:</label>
-            <textarea
-              class="form-control mb-3"
-              name="urls"
-              id="urls"
-              cols="30"
-              rows="10"
-              placeholder="https://www.example.com"
-              required
-            ></textarea>
+            <textarea class="form-control mb-3" name="urls" id="urls" cols="30" rows="10"
+              placeholder="https://www.example.com" required></textarea>
 
             <!-- boton para recargar  -->
-            <button
-              class="btn btn-outline-danger"
-              id="reload"
-              onclick="location.reload();"
-            >
+            <button class="btn btn-outline-danger" id="reload" onclick="location.reload();">
               Limpiar campo
             </button>
 
             <!-- boton para verificar  -->
             <button id="calcular-btn" class="btn btn-primary" type="submit">
               Verificar Urls
-              <span
-                id="loader"
-                class="spinner-border spinner-border-sm visually-hidden"
-                role="status"
-                aria-hidden="true"
-              ></span>
+              <span id="loader" class="spinner-border spinner-border-sm visually-hidden" role="status"
+                aria-hidden="true"></span>
             </button>
           </form>
         </div>
-        <div  id="resultado" class="p-3 rounded-4 bg-white mb-3 visually-hidden">
-          <table class="table" id="table1">
-            <thead>
-              <tr>
-                <th>Sitio</th>
-                <th>Estado</th>
-              </tr>
-            </thead>
-            <tbody id="tabla">
-            
-            </tbody>
+        <div id="resultado" class="p-3 rounded-4 bg-white mb-3 visually-hidden">
+          <table class="table" id="example">
+
           </table>
         </div>
-      
       </div>
     </div>
+  </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-      crossorigin="anonymous"
-    ></script>
 
-    <!-- ajax  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
 
-    <script>
-      // generador de campos
 
-      $(function () {
-        $("#formulario").submit(function (e) {
-          e.preventDefault();
-          $.ajax({
-            async: true,
-            cache: false,
-            dataType: "html",
-            url: "/verificar",
-            data: $("form").serialize(),
-            type: "POST",
-            beforeSend: function () {
-              //   console.log("carga");
-              $("#loader").removeClass("visually-hidden");
-            },
+  <!-- <script src="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"></script> -->
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+  <!-- ajax  -->
 
-            success: function (response) {
-              data = JSON.parse(response);
+  <script>
+    // generador de campos
 
-              $("#tabla").empty();
+    $(function () {
+      $("#formulario").submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+          async: true,
+          cache: false,
+          dataType: "html",
+          url: "/verificar",
+          data: $("form").serialize(),
+          type: "POST",
+          beforeSend: function () {
+            //   console.log("carga");
+            $("#loader").removeClass("visually-hidden");
+          },
 
-              for (const key in data) {
-                // console.log(data[key]);
-                $("#tabla").append('<tr><td>'+data[key] +'</td><td>ok</td></tr> ');
-                
-              }
-            },
-            error: function (error) {
-              console.log(error);
-            },
-            complete: function () {
-              // Set our complete callback, adding the .hidden class and hiding the spinner.
-              $("#loader").addClass("visually-hidden");
-              $("#resultado").removeClass("visually-hidden");
+          success: function (response) {
+            dataSets = JSON.parse(response);
 
-              //   console.log("completo");
-            },
-          });
+            $('#example').DataTable({
+              destroy: true,
+              data: dataSets,
+              columns: [
+                { title: 'Sitio' },
+                { title: 'Descripcion' },
+                { title: 'Estado' }
+              ],
+            });
+
+          },
+          error: function (error) {
+            console.log(error);
+          },
+          complete: function () {
+            // Set our complete callback, adding the .hidden class and hiding the spinner.
+            $("#loader").addClass("visually-hidden");
+            $("#resultado").removeClass("visually-hidden");
+
+            //   console.log("completo");
+          },
         });
       });
-    </script>
-    <!-- //cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css -->
-    <!-- tabla  -->
-    <script src="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-    <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"></script> -->
+    });
+  </script>
 
-    <script>
-      $(document).ready(function () {
-        $("#table1").DataTable();
-      });
-    </script>
 
-    <!-- stilo  -->
-    <style>
-      .bg-custom {
-        background: #1488cc; /* fallback for old browsers */
-        background: -webkit-linear-gradient(
-          to right,
+
+  <style>
+    .bg-custom {
+      background: #1488cc;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right,
           #2b32b2,
-          #1488cc
-        ); /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(
-          to right,
+          #1488cc);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right,
           #2b32b2,
-          #1488cc
-        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      }
+          #1488cc);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
 
-      body {
-        overflow-x: hidden;
-      }
+    body {
+      overflow-x: hidden;
+    }
 
-      .accordion-flush .accordion-item {
-        border-right: 0;
-        border-left: 0;
-        border-radius: 16px !important;
-      }
+    .accordion-flush .accordion-item {
+      border-right: 0;
+      border-left: 0;
+      border-radius: 16px !important;
+    }
 
-      .accordion-flush .accordion-item .accordion-button {
-        border-radius: 13px !important;
-      }
-    </style>
-  </body>
+    .accordion-flush .accordion-item .accordion-button {
+      border-radius: 13px !important;
+    }
+  </style>
+</body>
+
 </html>

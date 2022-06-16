@@ -1,8 +1,6 @@
 
 # Importo la libreria de flask
-
-
-from flask import Flask, render_template, json, request
+from flask import Flask, json, render_template, request
 
 from controller import *
 
@@ -16,13 +14,17 @@ def main():
 
 # ruta para recibir post 
 @app.route('/verificar', methods=['POST'])
-def validar():
+
+def getUrls():
 
     #  obtengo los datos de mi formulario, campo urls
     _field_data = request.form['urls']
 
+
     # creo un array por los url recibidos
     urls = _field_data.split("\n")
+
+  
 
     # verifico lo datos 
     resultados = urls_data_check(urls)
